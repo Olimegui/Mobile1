@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _transform = transform;
+
+        GetComponent<Collider>().enabled = true; // Certifique-se de que o Collider está habilitado
     }
 
     void Update()
