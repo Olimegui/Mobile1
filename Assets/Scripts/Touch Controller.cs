@@ -19,7 +19,7 @@ public class TouchController : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            Debug.Log("mouse pressionado");
+            //Debug.Log("mouse pressionado");
             //mousePosition AGORA - mousePosition passado
             Move(Input.mousePosition.x - pastPosition.x);
             pastPosition = Input.mousePosition;
@@ -29,7 +29,7 @@ public class TouchController : MonoBehaviour
 
     public void Move(float speed)
     {
-        Debug.Log("movendo" + speed);
+        //Debug.Log("movendo" + speed);
         transform.position += Vector3.right * Time.deltaTime * speed * velocity;
     }
 }

@@ -14,19 +14,19 @@ public class UIController : MonoBehaviour
 
         if (loadSceneHelper == null)
         {
-            Debug.LogError("LoadSceneHelper não está atribuído no Inspector.");
+            //Debug.LogError("LoadSceneHelper não está atribuído no Inspector.");
             return;
         }
 
         if (loadSceneButton == null)
         {
-            Debug.LogError("LoadSceneButton não está atribuído no Inspector.");
+            //Debug.LogError("LoadSceneButton não está atribuído no Inspector.");
             return;
         }
 
         if (playerMovementScript == null)
         {
-            Debug.LogError("PlayerMovementScript não está atribuído no Inspector.");
+            //Debug.LogError("PlayerMovementScript não está atribuído no Inspector.");
             return;
         }
 
