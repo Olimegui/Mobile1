@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ebac.Core.Singleton;
+using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     //publics
     [Header("Lerp")]
@@ -14,20 +16,28 @@ public class PlayerController : MonoBehaviour
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
 
+    public bool invencible = false;
+
     //privates
     private bool _canRun;
     private Vector3 _pos;
     private Transform _transform;
+    private float _currentSpeed;
+    private Vector3 _startPosition;
 
-    public GameObject endScreen;
-
-    void Start()
+    private void Start()
     {
+        _startPosition = transform.position;
+        ResetSpeed();
+
         _transform = transform;
 
         GetComponent<Collider>().enabled = true; // Certifique-se de que o Collider está habilitado
     }
 
+    public GameObject endScreen;
+
+  
     void Update()
     {
         if (!_canRun) return;
@@ -37,14 +47,14 @@ public class PlayerController : MonoBehaviour
         _pos.z = _transform.position.z;
 
         _transform.position = Vector3.Lerp(_transform.position, _pos , lerpSpeed * Time.deltaTime);
-        _transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag == tagToCheckEnemy)
         {
-            EndGame();
+            if(!invencible) EndGame();
         }
     }
 
@@ -52,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.transform.tag == tagToCheckEndLine)
         {
-            EndGame();
+            if (!invencible) EndGame();
         }
     }
 
@@ -66,4 +76,24 @@ public class PlayerController : MonoBehaviour
     {
         _canRun = true; 
     }
+
+    public void SetInvencible(bool b = true)
+    {
+        invencible = b;
+    }
+
+    #region POWER UPS
+    public void SetPowerUpText(string s)
+    {
+       // uiTextPowerUp.text = s;
+    }
+    public void PowerUpSpeedUp(float f)
+    {
+        _currentSpeed = f;
+    }
+    public void ResetSpeed()
+    {
+        _currentSpeed = speed;
+    }
+    #endregion
 }
