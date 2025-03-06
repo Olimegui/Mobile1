@@ -155,4 +155,4 @@ MonoBehaviour:
   timeToHide: 3
   graphicItem: {fileID: 4820405065461228625}
   audioSource: {fileID: 0}
-  duration: 0
+  duration: 5

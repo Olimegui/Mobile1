@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ebac.Core.Singleton;
 using TMPro;
+using DG.Tweening;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -15,6 +16,9 @@ public class PlayerController : Singleton<PlayerController>
 
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
+
+    [Header("TextMeshPro")]
+    public TextMeshPro uiTextPowerUp;
 
     public bool invencible = false;
 
@@ -85,7 +89,7 @@ public class PlayerController : Singleton<PlayerController>
     #region POWER UPS
     public void SetPowerUpText(string s)
     {
-       // uiTextPowerUp.text = s;
+        uiTextPowerUp.text = s;
     }
     public void PowerUpSpeedUp(float f)
     {
@@ -95,5 +99,21 @@ public class PlayerController : Singleton<PlayerController>
     {
         _currentSpeed = speed;
     }
+
+    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+    {
+        /*var p = transform.position;
+        p.y = _startPosition.y + amount;
+        transform.position = p;*/
+
+        transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);//.OnComplete(ResetHeight);a
+        Invoke(nameof(ResetHeight), duration);
+    }
+
+    public void ResetHeight()
+    {
+        transform.DOMoveY(_startPosition.y, .1f);
+    }
+
     #endregion
 }
