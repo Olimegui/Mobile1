@@ -22,6 +22,9 @@ public class PlayerController : Singleton<PlayerController>
 
     public bool invencible = false;
 
+    [Header("Coin Setup")]
+    public GameObject coinCollector;
+
     //privates
     private bool _canRun;
     private Vector3 _pos;
@@ -41,7 +44,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public GameObject endScreen;
 
-  
+
     void Update()
     {
         if (!_canRun) return;
@@ -50,21 +53,21 @@ public class PlayerController : Singleton<PlayerController>
         _pos.y = _transform.position.y;
         _pos.z = _transform.position.z;
 
-        _transform.position = Vector3.Lerp(_transform.position, _pos , lerpSpeed * Time.deltaTime);
+        _transform.position = Vector3.Lerp(_transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == tagToCheckEnemy)
+        if (collision.transform.tag == tagToCheckEnemy)
         {
-            if(!invencible) EndGame();
+            if (!invencible) EndGame();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == tagToCheckEndLine)
+        if (other.transform.tag == tagToCheckEndLine)
         {
             if (!invencible) EndGame();
         }
@@ -78,7 +81,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void StartToRun()
     {
-        _canRun = true; 
+        _canRun = true;
     }
 
     public void SetInvencible(bool b = true)
@@ -115,5 +118,10 @@ public class PlayerController : Singleton<PlayerController>
         transform.DOMoveY(_startPosition.y, .1f);
     }
 
-    #endregion
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
+
+        #endregion
+    }
 }
