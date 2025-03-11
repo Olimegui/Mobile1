@@ -11,6 +11,7 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Lerp")]
     public Transform target;
     public float lerpSpeed = 1f;
+    public GameObject endScreen;
 
     public float speed = 1f;
 
@@ -24,6 +25,10 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Coin Setup")]
     public GameObject coinCollector;
+
+    [Header("Animation")]
+    public AnimatorManager animatorManager;
+
 
     //privates
     private bool _canRun;
@@ -42,8 +47,6 @@ public class PlayerController : Singleton<PlayerController>
         GetComponent<Collider>().enabled = true; // Certifique-se de que o Collider está habilitado
     }
 
-    public GameObject endScreen;
-
 
     void Update()
     {
@@ -61,7 +64,11 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.tag == tagToCheckEnemy)
         {
-            if (!invencible) EndGame();
+            if (!invencible)
+            {
+                MoveBack(collision.transform);
+                EndGame(AnimatorManager.AnimationType.DEAD);
+            }
         }
     }
 
@@ -73,15 +80,22 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void EndGame()
+    private void MoveBack(Transform t)
+    {
+        t.DOMoveZ(1f, .3f).SetRelative();
+    }
+
+    private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE) 
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animatorManager.Play(animationType);
     }
 
     public void StartToRun()
     {
         _canRun = true;
+        animatorManager.Play(AnimatorManager.AnimationType.RUN);
     }
 
     public void SetInvencible(bool b = true)
