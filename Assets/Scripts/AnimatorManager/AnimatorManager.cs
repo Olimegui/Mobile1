@@ -7,7 +7,7 @@ public class AnimatorManager : MonoBehaviour
 {
     public Animator animator;
 
-    public List<AnimatorSetup> animatorsetups;
+    public List<AnimatorSetup> animatorSetups;
 
     public enum AnimationType
     {
@@ -18,7 +18,7 @@ public class AnimatorManager : MonoBehaviour
 
     public void Play(AnimationType type, float currentSpeedFactor = 1f)
     {
-        foreach (var animation in animatorsetups)
+        foreach (var animation in animatorSetups)
         {
             if (animation.type == type)
             {
@@ -29,7 +29,7 @@ public class AnimatorManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7193805671317595757}
-  animatorsetups:
+  animatorSetups:
   - type: 0
     trigger: idle
     speed: 1
@@ -147,4 +147,4 @@ MonoBehaviour:
     speed: 2
   - type: 2
     trigger: dead
-    speed: 1.5
+    speed: 2.5
