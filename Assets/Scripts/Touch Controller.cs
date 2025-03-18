@@ -7,6 +7,7 @@ public class TouchController : MonoBehaviour
     public Vector2 pastPosition;
     public float velocity = 1f;
     public float forwardSpeed = 1f;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class TouchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) return;
+
         if(Input.GetMouseButton(0))
         {
             //Debug.Log("mouse pressionado");

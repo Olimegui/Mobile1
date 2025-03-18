@@ -9,6 +9,8 @@ public class AnimatorManager : MonoBehaviour
 
     public List<AnimatorSetup> animatorSetups;
 
+    private bool isDead = false;
+
     public enum AnimationType
     {
         IDLE,
@@ -18,12 +20,21 @@ public class AnimatorManager : MonoBehaviour
 
     public void Play(AnimationType type, float currentSpeedFactor = 1f)
     {
+        if (isDead && type != AnimationType.DEAD) return;
+
         foreach (var animation in animatorSetups)
         {
             if (animation.type == type)
             {
                 animator.SetTrigger(animation.trigger);
                 animator.speed = animation.speed * currentSpeedFactor;
+
+                if (type == AnimationType.DEAD)
+                {
+                    isDead = true;
+                    StopMovement();
+                }
+
                 break;
             }
         }
@@ -31,6 +42,8 @@ public class AnimatorManager : MonoBehaviour
 
     public void Update()
     {
+        if (isDead) return;
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Play(AnimationType.RUN);
@@ -43,6 +56,30 @@ public class AnimatorManager : MonoBehaviour
         {
             Play(AnimationType.IDLE);
         }
+    }
+
+
+    private void StopMovement()
+    {
+        TouchController touchController = GetComponent<TouchController>();
+        if (touchController != null)
+        {
+            touchController.canMove = false;
+        }
+
+        PlayerController playerController = GetComponent <PlayerController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+
     }
 }
 

@@ -157,6 +157,7 @@ MonoBehaviour:
   pastPosition: {x: 0, y: 0}
   velocity: 0.7
   forwardSpeed: 3
+  canMove: 1
 --- !u!65 &80898088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2680,6 +2681,7 @@ MonoBehaviour:
   loadSceneHelper: {fileID: 1683121748}
   loadSceneButton: {fileID: 1574417709}
   playerMovementScript: {fileID: 80898087}
+  playerController: {fileID: 1326664921}
 --- !u!1 &1909892703
 GameObject:
   m_ObjectHideFlags: 0

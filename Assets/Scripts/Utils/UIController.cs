@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public LoadSceneHelper loadSceneHelper;
     public Button loadSceneButton;
     public TouchController playerMovementScript; //Substitua MonoBehaviour
+    public PlayerController playerController;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class UIController : MonoBehaviour
         {
             playerMovementScript.enabled = true; //Ativa o script de movimento do jogador
             loadSceneHelper.Load(1); // Supondo que a cena com índice 1 seja a que você quer carregar
+            playerController.StartToRun();
         });
     }    
 }

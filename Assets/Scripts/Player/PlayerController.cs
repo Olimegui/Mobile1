@@ -32,6 +32,7 @@ public class PlayerController : Singleton<PlayerController>
 
     //privates
     private bool _canRun;
+    private bool canMove = true;
     private Vector3 _pos;
     private Transform _transform;
     private float _currentSpeed;
@@ -51,6 +52,8 @@ public class PlayerController : Singleton<PlayerController>
 
     void Update()
     {
+        if (!canMove) return;
+
         if (!_canRun) return;
 
         _pos = target.position;
@@ -59,6 +62,11 @@ public class PlayerController : Singleton<PlayerController>
 
         _transform.position = Vector3.Lerp(_transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
+    }
+
+    public void StopPlayer()
+    {
+        canMove = false;
     }
 
     private void OnCollisionEnter(Collision collision)
