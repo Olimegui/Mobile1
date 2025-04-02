@@ -29,6 +29,7 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Animation")]
     public AnimatorManager animatorManager;
 
+   [SerializeField] private BounceHelper _bounceHelper;
 
     //privates
     private bool _canRun;
@@ -47,6 +48,13 @@ public class PlayerController : Singleton<PlayerController>
         _transform = transform;
 
         GetComponent<Collider>().enabled = true; // Certifique-se de que o Collider está habilitado
+    }
+
+    public void Bounce()
+    {
+        if(_bounceHelper != null) 
+        
+          _bounceHelper.Bounce();
     }
 
 

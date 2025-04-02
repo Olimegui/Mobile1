@@ -24,7 +24,7 @@ public class ItemCollactableCoin : ItemCollactableBase
         base.OnCollect();
         GetComponent<Collider>().enabled = false;
         collect = true;
-        //PlayerController.Instance.Bounce();
+        PlayerController.Instance.Bounce();
     }
 
     protected override void Collect()
@@ -36,7 +36,7 @@ public class ItemCollactableCoin : ItemCollactableBase
     {
         if (collect)
         {
-            transform.position = Vector3.Lerp(transform.position,PlayerController.Instance.transform.position, lerp * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, PlayerController.Instance.transform.position, lerp * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, PlayerController.Instance.transform.position) < minDistance)
             {
@@ -47,3 +47,4 @@ public class ItemCollactableCoin : ItemCollactableBase
     }
 
 }
+
