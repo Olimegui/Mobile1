@@ -88,8 +88,10 @@ public class LevelManager : MonoBehaviour
         }
 
         ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+
         StartCoroutine(ScalePiecesByTime());
 
+        CoinsAnimationManager.Instance.StartAnimation();
     }
 
     IEnumerator ScalePiecesByTime()
@@ -105,6 +107,8 @@ public class LevelManager : MonoBehaviour
         {
             _spawnedPieces[i].transform.DOScale(1, scaleDuration).SetEase(ease);
             yield return new WaitForSeconds(scaleTimeBetweenPieces);
+
+            CoinsAnimationManager.Instance.StartAnimation();
 
         }
     }
