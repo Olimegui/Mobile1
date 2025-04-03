@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 5582719702229080616}
   - component: {fileID: 4998964462850290037}
   - component: {fileID: 9217475572468496893}
+  - component: {fileID: 5291486857343303522}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -110,7 +111,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3097238011a65043865e1a0cc0c3407, type: 2}
+  - {fileID: 2100000, guid: 936b51ce0bcac4c46ab973c6da98b192, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,6 +155,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5291486857343303522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821373237775698219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c8ccbd2703d6048a2c5dce9ac42e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  meshRenderer: {fileID: 4998964462850290037}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &6677462748971137924
 GameObject:
   m_ObjectHideFlags: 0
