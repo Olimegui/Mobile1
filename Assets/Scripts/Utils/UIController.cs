@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
         loadSceneButton.onClick.AddListener(() =>
         {
             playerMovementScript.enabled = true; //Ativa o script de movimento do jogador
-            loadSceneHelper.Load(1); // Supondo que a cena com índice 1 seja a que você quer carregar
+            //loadSceneHelper.Load(1); // Supondo que a cena com índice 1 seja a que você quer carregar
             playerController.StartToRun();
         });
     }    
