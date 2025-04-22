@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - EndLIne
   - CoinCollector
+  - Undefined
+  - EndLine
   layers:
   - Default
   - TransparentFX

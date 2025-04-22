@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5543895161733252229, guid: da99519bb28e8fa45bd118be37d2d502, type: 3}
       propertyPath: m_TagString
-      value: EndLIne
+      value: EndLine
       objectReference: {fileID: 0}
     - target: {fileID: 7906929260440790339, guid: da99519bb28e8fa45bd118be37d2d502, type: 3}
       propertyPath: m_LocalScale.x
