@@ -151,12 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 80898086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24723f31992fa424ebd0a4bffaf8dbc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 49f805c12fcfded478de50f74d8ff81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pastPosition: {x: 0, y: 0}
-  velocity: 0.7
-  forwardSpeed: 3
+  velocity: 1
+  forwardSpeed: 1
   canMove: 1
 --- !u!65 &80898088
 BoxCollider:
