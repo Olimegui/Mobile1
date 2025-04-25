@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 80898090}
   - component: {fileID: 80898089}
   - component: {fileID: 80898088}
-  - component: {fileID: 80898087}
+  - component: {fileID: 80898092}
   m_Layer: 0
   m_Name: PositionController
   m_TagString: Untagged
@@ -142,22 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &80898087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80898086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49f805c12fcfded478de50f74d8ff81f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pastPosition: {x: 0, y: 0}
-  velocity: 1
-  forwardSpeed: 1
-  canMove: 1
 --- !u!65 &80898088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246,6 +230,22 @@ Transform:
   - {fileID: 1326664919}
   m_Father: {fileID: 2074026654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80898092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80898086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f805c12fcfded478de50f74d8ff81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pastPosition: {x: 0, y: 0}
+  velocity: 5
+  forwardSpeed: 5
+  canMove: 1
 --- !u!1001 &248160242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2820,7 +2820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadSceneHelper: {fileID: 1683121748}
   loadSceneButton: {fileID: 1574417709}
-  playerMovementScript: {fileID: 80898087}
+  playerMovementScript: {fileID: 80898092}
   playerController: {fileID: 1326664921}
 --- !u!1 &1929223324
 GameObject:
